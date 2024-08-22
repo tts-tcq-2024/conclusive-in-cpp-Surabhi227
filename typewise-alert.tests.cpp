@@ -23,3 +23,16 @@ TEST(TypeWiseAlertTestSuite, CheckAndAlertEmail) {
     BatteryCharacter batteryChar = {PASSIVE_COOLING, "BrandB"};
     checkAndAlert(TO_EMAIL, batteryChar, 0);  // Should send normal alert via email
 }
+
+TEST(TypeWiseAlertTestSuite, CheckAndAlert_High_Breach_Email) {
+    BatteryCharacter batteryChar = {PASSIVE_COOLING, "BrandC"};
+    // Assuming 36 is a temperature that should trigger a high breach alert
+    checkAndAlert(TO_EMAIL, batteryChar, 36);  // Should send too high alert via email
+}
+
+TEST(TypeWiseAlertTestSuite, CheckAndAlert_Low_Breach_Email) {
+    BatteryCharacter batteryChar = {PASSIVE_COOLING, "BrandD"};
+    // Assuming 5 is a temperature that should trigger a low breach alert
+    checkAndAlert(TO_EMAIL, batteryChar, 5);  // Should send too low alert via email
+}
+
